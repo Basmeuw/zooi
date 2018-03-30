@@ -4,6 +4,7 @@ class Vehicle {
   PVector velocity;
   PVector acceleration;
   float r;
+  float arriveradius;
   float maxforce;    // Maximum steering force
   float maxspeed;    // Maximum speed
 
@@ -12,6 +13,7 @@ class Vehicle {
     velocity = new PVector(0,0);
     location = new PVector(x,y);
     r = 6;
+    arriveradius = 100;
     maxspeed = 4;
     maxforce = 0.1;
   }
@@ -39,20 +41,23 @@ class Vehicle {
     float d = desired.mag();
     // Scale with arbitrary damping within 100 pixels
     if (d < 100) {
-      float m = map(d,0,100,0,maxspeed);
-      desired.setMag(m);
+      desired.setMag(map(d, 0, arriveradius, 0, maxspeed));
     } else {
       desired.setMag(maxspeed);
     }
 
     // Steering = Desired minus Velocity
+    // Fres = Fd - Fv
     PVector steer = PVector.sub(desired,velocity);
     steer.limit(maxforce);  // Limit to maximum steering force
     applyForce(steer);
   }
   
   void display() {
-    
+    triangle();
+  }
+  
+  void triangle(){
     // Draw a triangle rotated in the direction of velocity
     float theta = velocity.heading2D() + PI/2;
     fill(127);
@@ -67,7 +72,5 @@ class Vehicle {
     vertex(r, r*2);
     endShape(CLOSE);
     popMatrix();
-    
-    
   }
 }
