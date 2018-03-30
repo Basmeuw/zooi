@@ -7,7 +7,7 @@ class Particle{
   Particle(float x, float y){
     
     pos = new PVector(x, y);
-    vel = new PVector(0, random(-10, -12));
+    vel = new PVector(0, 0);
     acc = new PVector(0, 0);
   
   }
@@ -16,7 +16,6 @@ class Particle{
     vel.add(acc);
     pos.add(vel);
     acc.mult(0);
-    render();
   }
   
   void applyForce(PVector force){
