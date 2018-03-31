@@ -4,8 +4,6 @@ PVector gravity;
 
 void setup(){
   size(1000, 1000);
-  stroke(200, 50, 100);
-  strokeWeight(10);
   fireworks = new ArrayList<Firework>();
   gravity = new PVector(0, 0.1);
 }
