@@ -1,5 +1,5 @@
 import geomerative.*;
-String myText = "train";
+String myText = "Bas";
 RPoint[] myPoints;
 ArrayList<Firework> fireworks;
 
