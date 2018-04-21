@@ -16,6 +16,8 @@ class Segment{
   }
   
   void render(){
+    strokeWeight(3);
+    stroke(200, 100, 200);
     line(x, y, x2, y2);
   }
 }

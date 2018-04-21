@@ -8,6 +8,8 @@ float x = 0;
 float jumpForce = -4;
 PVector gravity = new PVector(0, 0.15);
 
+float score = 0;
+
 void setup(){
   size(600, 600);
   stroke(255);
@@ -28,7 +30,9 @@ void setup(){
 
 void draw(){
   background(0);
-  translate(-c.pos.x + width/2, 0);
+  textSize(40);
+  text(int(score), width/2, 40);
+  translate(-c.pos.x + width/2, -c.pos.y + height/2);
   
   c.applyForce(gravity);
   c.update();
@@ -42,4 +46,5 @@ void draw(){
 
 void keyPressed(){
   c.vel.y = jumpForce;
+  score++;
 }
